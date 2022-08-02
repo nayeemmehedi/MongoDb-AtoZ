@@ -59,6 +59,9 @@ or clrt c
   
   db.collection.deleteMany()
   db.collection.deleteOne()
+  
+  🙂 Mongoose
+
 
   
   
