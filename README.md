@@ -60,6 +60,55 @@ or clrt c
   db.collection.deleteMany()
   db.collection.deleteOne()
   
+  
+  ....................................
+  
+  Quearing Data :
+  
+  .....................................
+  
+  db.collection.find() - sob chole asbe
+  db.collection.find().count()  - koto gula ase
+  db.collection.find().limit(2) - limit
+  
+  db.collection.find().skip(2).limit(2) - first skip 2 ta koro trpr 2 ta dekhao
+  
+  db.collection.find().sort({age : -1})  -> -1 mane boro thke choto sort  hy jabe
+  db.collection.find().sort({age : 1})  -> 1 mane choto thke boro sort  hy jabe
+  
+  db.collection.find().sort({age : 1,name:1}) =>age 2 ta samne hy name dara short krbe
+  db.collection.find().projection({name:1,age:0}) =>name e onle lgbe, age lgbe na
+  
+  db.collection.find({name:"saad}) -> saad name filter koro
+  
+  skills = ["js","py"]
+  
+  db.collection.find({skills:"py"})
+  
+  db.collection.find({skills : ["js","py"]}) -> exact amn vbei hbe
+  
+  
+  exm. { name : [ {city :dhaka} ] }
+  
+   db.collection.find({"name.city":"dhaka"})
+  
+  
+  
+  
+  .....................
+  operator
+  .....................
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   🙂 Mongoose
 
 
