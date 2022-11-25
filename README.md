@@ -1,4 +1,4 @@
-## MongoDb First Terminal Command
+##  :grinning: MongoDb First Terminal Command
 
 
 doc link : https://www.mongodb.com/docs/manual/introduction/
