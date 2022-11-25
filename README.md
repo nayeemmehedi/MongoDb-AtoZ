@@ -1,17 +1,17 @@
 ##  :grinning: MongoDb First Terminal Command
 
 
-doc link : https://www.mongodb.com/docs/manual/introduction/
+ :cold_face: doc link : https://www.mongodb.com/docs/manual/introduction/
 
 /////////////////
-1st Part
-😮‍💨
+:cold_face: 1st Part
+
 
 ##### First start Mongodb - 😋 mongo
 
 ##### clean command - 😁 cls
 
-start hy jbe..😊
+:cold_face: start hy jbe..😊
 
 ##### database dekhao command - 😋  show dbs
 
@@ -58,12 +58,12 @@ or clrt c
   
   
   '''''
-  skills : ["javascript","python"] => ["js","python"]
+ :cold_face: skills : ["javascript","python"] => ["js","python"]
 
   db.collection.updateMany ({skills : {exists : true} , {$set : { "skills.1" :" js "}}})
   
   
-  jdi push krte chai
+ :cold_face: jdi push krte chai
   
   db.collection.updateMany ({skills : {exists : true} , {$push : { "skills" :" bangla "}}})
   
@@ -78,11 +78,11 @@ or clrt c
   db.collection.updateMany ({skills : {exists : true} , {$pullAll : { "skills" :["bangla","english","torrent"] }})
   
   
-  ### RENAME COLLUME
+  ### RENAME COLLUME :cold_face:
   
   {name :"saad",age :23}
   
-   db.cl.updateOne({name :"saad"},{$rename : {age :"base"}})
+:cold_face:    db.cl.updateOne({name :"saad"},{$rename : {age :"base"}})
   
    {name :"saad",base :23}
   .....
@@ -115,12 +115,12 @@ or clrt c
   db.collection.find().count()  - koto gula ase
   db.collection.find().limit(2) - limit
   
-  db.collection.find().skip(2).limit(2) - first skip 2 ta koro trpr 2 ta dekhao
+  db.collection.find().skip(2).limit(2) - first skip 2 ta koro trpr 2 ta dekhao :cold_face:
   
   db.collection.find().sort({age : -1})  -> -1 mane boro thke choto sort  hy jabe
   db.collection.find().sort({age : 1})  -> 1 mane choto thke boro sort  hy jabe
   
-  db.collection.find().sort({age : 1,name:1}) =>age 2 ta samne hy name dara short krbe
+  db.collection.find().sort({age : 1,name:1}) =>age 2 ta samne hy name dara short krbe  :cold_face:
   db.collection.find().projection({name:1,age:0}) =>name e onle lgbe, age lgbe na
   
   db.collection.find({name:"saad}) -> saad name filter koro
@@ -129,18 +129,18 @@ or clrt c
   
   db.collection.find({skills:"py"})
   
-  db.collection.find({skills : ["js","py"]}) -> exact amn vbei hbe
+  db.collection.find({skills : ["js","py"]}) -> exact amn vbei hbe :cold_face:
   
   
   exm. { name : [ {city :dhaka} ] }
   
-   db.collection.find({"name.city":"dhaka"})
+   db.collection.find({"name.city":"dhaka"})   :cold_face:
   
   
   
   
   .....................
-  operator
+  :cold_face: operator
   .....................
   
   
@@ -156,7 +156,7 @@ or clrt c
   
   
   
-------------query operatror
+------------query operatror :cold_face:
   ------------
   
   age 22 find--> db.user.find({age:22})
@@ -175,9 +175,9 @@ or clrt c
   
   .....
   
-  exists -->  db.user.find({age : {$exists : true }})  false -> jdr age nai tdr 
+ :cold_face: exists -->  db.user.find({age : {$exists : true }})  false -> jdr age nai tdr 
   
-  type --> db.user.find( {address : {$type :"string"})
+  :cold_face: type --> db.user.find( {address : {$type :"string"})
   
   ...
   
@@ -185,7 +185,7 @@ or clrt c
   {name :"sakil",  spent  :300, budget:400 },
   {name :"joni",  spent  : 200 ,budget:400 },
   
-  kar tk kom sevbe sort koro  -- > db.user.find({expr : {$lt : ["$budget ","$spent"] })
+  :cold_face: kar tk kom sevbe sort koro  -- > db.user.find({expr : {$lt : ["$budget ","$spent"] })
   
   
   
