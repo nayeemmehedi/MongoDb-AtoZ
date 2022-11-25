@@ -53,7 +53,51 @@ or clrt c
 ##### db.collection.updateOne(<filter>,<update>)   -> filter - {nameL:'nayeem'}  => update {$set:{name:"mehedi"}}
   
 ##### db.collection.updateMany(<filter>,<update>)
+  
+  #### db.collection.updateMany ( {age : {$gt : 20 }} , {$inc : {age : 2}} )
+  
+  
+  '''''
+  skills : ["javascript","python"] => ["js","python"]
 
+  db.collection.updateMany ({skills : {exists : true} , {$set : { "skills.1" :" js "}}})
+  
+  
+  jdi push krte chai
+  
+  db.collection.updateMany ({skills : {exists : true} , {$push : { "skills" :" bangla "}}})
+  
+  #### jdi onkk gula value dete chai skills r
+  
+   db.collection.updateMany ({skills : {exists : true} , {$push : { "skills" :{$each :["bangla","english","torrent"] }}})
+  
+  ### jodi konta bad dete chai ["bangla ","english "] , er vtr thke 1 ta bad dete chai
+   db.collection.updateMany ({skills : {exists : true} , {$pull : { "skills" :" bangla "}}})
+  
+  ### onk gula soraite chaile 1 sthe
+  db.collection.updateMany ({skills : {exists : true} , {$pullAll : { "skills" :["bangla","english","torrent"] }})
+  
+  
+  ### RENAME COLLUME
+  
+  {name :"saad",age :23}
+  
+   db.cl.updateOne({name :"saad"},{$rename : {age :"base"}})
+  
+   {name :"saad",base :23}
+  .....
+  
+ #####  ...column delete
+  
+     db.cl.updateOne({name :"saad"},{$unset : {base :""}})
+  
+
+  
+  
+  
+  
+  
+  
   
   😮‍💨 delete :
   
@@ -98,6 +142,57 @@ or clrt c
   .....................
   operator
   .....................
+  
+  
+  gt - greater then
+  gte -greater then equal
+
+  lt- less then
+  lte - less then equal
+  eq - qual
+  ne -not equal  (value r soman na like 20 thkle ota bade sob)
+  in - array nei jar vtr j ase tai khujbe
+  nin - array r vtr j ase ta bad khujbe
+  
+  
+  
+------------query operatror
+  ------------
+  
+  age 22 find--> db.user.find({age:22})
+  
+  age 22 greater then find --> db.user.find({age : {$gt : 22 }}) 
+  
+  age 22 less then find --> db.user.find({age : {$lt : 22 }}) 
+  
+  saad and jarif j kono pailei deo find --> db.user.find({name : {$in : ["saad","jarif"]}}) 
+  
+  saad and jarif 2 ta bade deo deo find --> db.user.find({name : {$nin : ["saad","jarif"]}}) 
+  
+  and condition --> db.user.find({$and : [{name : 'nayeem', age : 20 } ]  })
+  same - db.user.find({name : 'nayeem', age : 20 })
+  
+  
+  .....
+  
+  exists -->  db.user.find({age : {$exists : true }})  false -> jdr age nai tdr 
+  
+  type --> db.user.find( {address : {$type :"string"})
+  
+  ...
+  
+  { name :"robin", spent : 400, budget:400 },
+  {name :"sakil",  spent  :300, budget:400 },
+  {name :"joni",  spent  : 200 ,budget:400 },
+  
+  kar tk kom sevbe sort koro  -- > db.user.find({expr : {$lt : ["$budget ","$spent"] })
+  
+  
+  
+  
+  
+  
+  
   
   
   
