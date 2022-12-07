@@ -55,11 +55,13 @@ or clrt c
 ------------
 =============
 
-
-### crud oparations
+--------------------
+crud oparations
 --------------------
 
-😮‍💨 ## create : 
+
+
+ ## create : 
 
 ###### insert one -
                       
@@ -69,7 +71,7 @@ or clrt c
                     
                     db.collection.insertMany( [{something:"something"} , {something:"something"}]) 
 
-😮‍## read :
+ ## read 😮‍💨💨 :
 
 ##### all Value  ki ase dekte chay -
                             
@@ -85,7 +87,7 @@ or clrt c
                             db.nayd.limit(1).skip(1)
 
 
-😮‍💨## update :
+ ## update 😮‍💨💨:
 
                          db.collection.updateOne(<filter>,<update>)   -> filter - {nameL:'nayeem'}  => update {$set:{name:"mehedi"}}
   
@@ -99,12 +101,13 @@ or clrt c
   
   example :
   ----------
+  
   skills : ["javascript","python"] => ["js","python"]
 
                           db.collection.updateMany ({skills : {exists : true} , {$set : { "skills.1" :" js "}}})
   
   
- :cold_face: #### jdi push krte chai
+  #### jdi push krte chai
   
                           db.collection.updateMany ({skills : {exists : true} , {$push : { "skills" :" bangla "}}})
   
@@ -143,7 +146,7 @@ or clrt c
   
   
   
-  😮‍💨## delete :
+  ## delete 😮‍:
   
                                  db.collection.deleteMany()
                                  db.collection.deleteOne()
@@ -151,7 +154,7 @@ or clrt c
   
   ....................................
   
-  Quearing Data :
+  Quearing Data 😮‍:
   
   .....................................
 
@@ -183,7 +186,7 @@ or clrt c
                                    
                                    
   
-  saad name filter koro
+  saad name filter koro 😮‍
   
                                    db.collection.find({name:"saad})  
   
