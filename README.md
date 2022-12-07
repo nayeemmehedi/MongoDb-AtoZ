@@ -70,6 +70,16 @@ crud oparations
 ###### insert many - 
                     
                     db.collection.insertMany( [{something:"something"} , {something:"something"}]) 
+                    
+                    
+     #### vs code example 
+     
+     
+                    
+                    
+                    
+                    
+                    
 
  ## read 😮‍💨💨 :
 
