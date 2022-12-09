@@ -107,6 +107,34 @@
                                       next(err.message)
                                 
                                  }
+                                 
+                                 
+                                 
+ ### FIND limit page ->      
+                                
+                                
+                            allroute = async (req, res, next) => {
+                                  const db = getDb();
+
+                                  const {limit, page } =req.query
+
+                                  try {
+                                    const value = await db
+                                      .collection("newUser")
+                                      .find()
+                                      .skip(+limit * page)
+                                      .limit(+limit)
+                                      .toArray();
+                                    res.status(200).send({ success: true, data: value });
+                                  } catch (error) {
+                                    res.send(error.message);
+                                    next(error)
+                                  }
+                                };
+
+                                 
+                                 
+                                 
 
 
 
