@@ -1,293 +1,187 @@
-##  :grinning: MongoDb First Terminal Command
+mongoose
 
+#### schema
 
- :cold_face: doc link : https://www.mongodb.com/docs/manual/introduction/
+##### basic schema
 
-/////////////////
+         const { Schema } = mongoose;
 
-##### First start Mongodb 
-                      
-                       - 😋 mongo
-
-##### clean command 
-                  
-                      - 😁 cls
-
-
-:cold_face: start hy jbe..😊
-
-##### database dekhao command 
-                          
-                             - 😋  show dbs
-
-##### database create - 
-                    
-                       😋 use nayeem
-                        
-                       (database name deo ,jdi na thake create krbe, jdi thake oitai swtch hbe)
-
-
-##### 😃 table banaono 1 ta - 
-
-                           🤩 db.nayDb.insertOne({name:"nayeem"})
-
-##### konta database active command -
-                            
-                                      😄 db
-
-##### database r vtr collection command -
-                                     
-                                      😆 show collections
-
-##### collection r vtr koto documents ase command - 
-                                   
-                                      🙂 db.naydb.find() -> db.naydb.find().pretty()
-
-ber hyr jnno - quit()
-or clrt c
-
-🙂
-2nd part
-🙂
-
-============
-++++++++++++
-------------
-=============
-
---------------------
-crud oparations
---------------------
+         const blogSchema = new Schema({
+           title:  String, // String is shorthand for {type: String}
+           author: String,
+           body:   String,
+           comments: [{ body: String, date: Date }],
+           date: { type: Date, default: Date.now },
+           hidden: Boolean,
+           meta: {
+             votes: Number,
+             favs:  Number
+           }
+         });
 
 
 
- ## create : 
-
-###### insert one -
-                      
-                    db.collection.insertOne({something:"something"})
-                    
-###### insert many - 
-                    
-                    db.collection.insertMany( [{something:"something"} , {something:"something"}]) 
-                    
-                    
-     #### vs code example 
-     
-     
-                    
-                    
-                    
-                    
-                    
-
- ## read 😮‍💨💨 :
-
-##### all Value  ki ase dekte chay -
-                            
-                            db.naydb.find(query={name:"nayeem"}, projection ={j j value ase tate 0 and 1 use kore show krbo ki na thik kore deya jai like name="nayeem" name : 0 dei thle name bade sob dkhbe})
-
-#### value limit first -
-                          
-                            db.nayd.find().limit(1)
-#### value limit first -
-                            db.nayd.findOne()
-##### value first skip command -
-                            
-                            db.nayd.limit(1).skip(1)
 
 
- ## update 😮‍💨💨:
 
-                         db.collection.updateOne(<filter>,<update>)   -> filter - {nameL:'nayeem'}  => update {$set:{name:"mehedi"}}
-  
-                         db.collection.updateMany(<filter>,<update>)
-  
-                         db.collection.updateMany ( {age : {$gt : 20 }} , {$inc : {age : 2}} )
-  
-  
-  ++++++
-  ------
-  
-  example :
-  ----------
-  
-  skills : ["javascript","python"] => ["js","python"]
 
-                          db.collection.updateMany ({skills : {exists : true} , {$set : { "skills.1" :" js "}}})
+#### email: {
+   --> :carousel_horse: type: String,
+    
+  --> :carousel_horse:  required: true,
   
-  
-  #### jdi push krte chai
-  
-                          db.collection.updateMany ({skills : {exists : true} , {$push : { "skills" :" bangla "}}})
-  
-  #### jdi onkk gula value dete chai skills r
-  
-                           db.collection.updateMany ({skills : {exists : true} , {$push : { "skills" :{$each :["bangla","english","torrent"] }}})
-  
-  ### jodi konta bad dete chai ["bangla ","english "] , er vtr thke 1 ta bad dete chai
-  
-                           db.collection.updateMany ({skills : {exists : true} , {$pull : { "skills" :" bangla "}}})
-  
-  ### onk gula soraite chaile 1 sthe
-  
-  
-                            db.collection.updateMany ({skills : {exists : true} , {$pullAll : { "skills" :["bangla","english","torrent"] }})
-  
-  
-  ### RENAME COLLUME :cold_face:
-  
-  {name :"saad",age :23}
-  
-                              db.cl.updateOne({name :"saad"},{$rename : {age :"base"}})
-  
-   {name :"saad",base :23}
-  .....
-  
- #### column delete
-  
-                               db.cl.updateOne({name :"saad"},{$unset : {base :""}})
-  
-
-  
-  
-  
-  
-  
-  
-  
-  ## delete 😮‍:
-  
-                                 db.collection.deleteMany()
-                                 db.collection.deleteOne()
-  
-  
-  ....................................
-  
-  Quearing Data 😮‍:
-  
-  .....................................
-
-                                   db.collection.find() - sob chole asbe
-                                   db.collection.find().count()  - koto gula ase
-                                   db.collection.find().limit(2) - limit
-                                      
- 
- first skip 2 ta koro trpr 2 ta dekhao :cold_face:
-  
-                                   db.collection.find().skip(2).limit(2) 
-                                       
-                                       
-  -1 mane boro thke choto sort  hy jabe
-  
-                                  db.collection.find().sort({age : -1})  
+            required : [true , "please provide a name in this product"],
    
-   1 mane choto thke boro sort  hy jabe
-                                  
-                                   db.collection.find().sort({age : 1}) 
-                                   
-  age 2 ta samne hy name dara short krbe  :cold_face:
-  
-                                   db.collection.find().sort({age : 1,name:1})
-                                   
-  name e onle lgbe, age lgbe na
-                                     
-                                   db.collection.find().projection({name:1,age:0}) 
-                                   
-                                   
-  
-  saad name filter koro 😮‍
-  
-                                   db.collection.find({name:"saad})  
-  
-  skills = ["js","py"]
-  
-                                  db.collection.find({skills:"py"})
-                                  
-   exact amn vbei hbe :cold_face:
-  
-                                  db.collection.find({skills : ["js","py"]}) 
-  
-  
-  exm. { name : [ {city :dhaka} ] }
-  
-                                   db.collection.find({"name.city":"dhaka"})   :cold_face:
-  
-  
-  
-  
-                                                  .....................
-                                                  :cold_face: operator
-                                                  .....................
-  
-  
-  $gt - greater then
-  $gte -greater then equal
+    
+ --> :carousel_horse:  unique: true,
+    
+ --> :carousel_horse:  lowercase: true,
+    
+-->  :carousel_horse:  validate: (value) => {
+      return validator.isEmail(value)
+    },
+    
+    ..
+    
+-->  :carousel_horse:   enum : {
+      values : ["kg", " litre" , "pcs"],
+      message : "value must be kg/litre/pcs"
+    },
+    
+    ..
+    
+ -->  :carousel_horse: trim : true,
+    
+ -->  :carousel_horse:  minLength : [3, "Min Length be at least 3 charactors"],
 
-  $lt- less then
-  $lte - less then equal
-  $eq - qual
-  $ne -not equal  (value r soman na like 20 thkle ota bade sob)
-  $in - array nei jar vtr j ase tai khujbe
-  $nin - array r vtr j ase ta bad khujbe
+ --> :carousel_horse:  maxLength : [10, "Max Length be at least 3 charactors"],
+    
+ -->  :carousel_horse:  min : [0,"price can't be negative"],
+     
+-->  :carousel_horse:  max : [10,"price can't be negative"],
+
+ ..
+    
+ --> :carousel_horse:  validate :{
+      validator : (value)=>{
+        const inInteger = Number.isInteger(value)
+        if(isInteger){
+          return true
+        }else{
+          return false
+        }
+      },
+      
+    },
+    
+    
+  }
+  
+  ambet and reference
+  
+  ### ref
+  jdi suppier alada akta jaiga thke ashe onno model thke 
+  
+           supplier {
+           type : mongoose.Schema.Types.ObjectId,
+           ref : "supplier"
+
+           }
+  
+  #### same jnis embet kore rkte hbe 
+  
+  catagories : [{
+  type : String,
+  
+  _id : mongoose.Schema.Types.ObjectId
+  }
+  ]
   
   
- ------------ 
-------------query operatror :cold_face:
-  ------------
+  .##
+  .##
   
-  age 22 find--> 
+  ## post korar way mongoose e 2 ta 
+  
+  1 .save
+  model r akta instance create krte hbe 
+  const product = new Product(req.body)
+  product.save()
+  
+  #### example
+  
+            app.post("/", async (req, res) => {
+            
+              try {
+                const value = new Number(req.body);
+                const result = await value.save();
+
+                res.send({
+                  status: "success",
+                  data: result,
+                });
+                
+              } catch (error) {
+                res.status(400).send({
+                  status: "failed",
+                  message: error.message,
+                });
+              }
+             });
+             
+             
+  2.create 
+  
+  #### example 
+  
+                   app.post("/", async (req, res) => {
                    
-                   db.user.find({age:22})
-  
-  age 22 greater then find --> 
-                    
-                   db.user.find({age : {$gt : 22 }}) 
-  
-  age 22 less then find --> 
-                   
-                    db.user.find({age : {$lt : 22 }}) 
-  
-  saad and jarif j kono pailei deo find --> 
-  
-                    db.user.find({name : {$in : ["saad","jarif"]}}) 
-  
-  saad and jarif 2 ta bade deo deo find --> 
+                    try {
+
+                      const value = await Number.create(req.body)
                       
-                    db.user.find({name : {$nin : ["saad","jarif"]}}) 
-  
-  and condition --> 
-                     db.user.find({$and : [{name : 'nayeem', age : 20 } ]  })
-  same - 
-  
-                      db.user.find({name : 'nayeem', age : 20 })
-  
-  
-  .....
-  
- :cold_face: exists --> 
-                              
-                              
-                              db.user.find({age : {$exists : true }})  false -> jdr age nai tdr 
-  
-  :cold_face: type -->
-  
-                              db.user.find( {address : {$type :"string"})
-  
-  ...
-  
-  { name :"robin", spent : 400, budget:400 },
-  {name :"sakil",  spent  :300, budget:400 },
-  {name :"joni",  spent  : 200 ,budget:400 },
-  
-  :cold_face: kar tk kom sevbe sort koro  -- >
-            
-            
-                               db.user.find({expr : {$lt : ["$budget ","$spent"] })
-  
+                      res.send({
+                        status: "success",
+                        data: value,
+                      });
+                      
+                      
+                    } catch (error) {
+                    
+                      res.status(400).send({
+                        status: "failed",
+                        message: error.message,
+                        
+                      });
+                    }
 
 
+                  });
+                  
+                  
+                  
+ #### midddleware
+ 
+ datasave hyr thik ager muhutte,jokhn post kora hy tkhn first eikhne asbe pore save hbe..
+    
 
-  
-  
+                  valueSchema.pre("save", function (next) {
+                    console.log(this)
+                    if(this.product == "ballon") {
+                      this.product = "biscuit";
+                      console.log(this)
+                    }
+
+                    next();
+                  });
+                  
+
+                     valueSchema.post("save", function (doc, next) {
+                       next();
+                     });
+                     
+                     
+ ### query method
+ 
+ 
 
