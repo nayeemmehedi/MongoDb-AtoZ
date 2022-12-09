@@ -1,293 +1,190 @@
-##  :grinning: MongoDb First Terminal Command
+#### Mongo db Find method : 
 
+doc -> https://www.mongodb.com/docs/manual/reference/operator/query/
 
- :cold_face: doc link : https://www.mongodb.com/docs/manual/introduction/
-
-/////////////////
-
-##### First start Mongodb 
-                      
-                       - 😋 mongo
-
-##### clean command 
-                  
-                      - 😁 cls
-
-
-:cold_face: start hy jbe..😊
-
-##### database dekhao command 
-                          
-                             - 😋  show dbs
-
-##### database create - 
-                    
-                       😋 use nayeem
-                        
-                       (database name deo ,jdi na thake create krbe, jdi thake oitai swtch hbe)
-
-
-##### 😃 table banaono 1 ta - 
-
-                           🤩 db.nayDb.insertOne({name:"nayeem"})
-
-##### konta database active command -
-                            
-                                      😄 db
-
-##### database r vtr collection command -
-                                     
-                                      😆 show collections
-
-##### collection r vtr koto documents ase command - 
-                                   
-                                      🙂 db.naydb.find() -> db.naydb.find().pretty()
-
-ber hyr jnno - quit()
-or clrt c
-
-🙂
-2nd part
-🙂
-
-============
-++++++++++++
-------------
-=============
-
---------------------
-crud oparations
---------------------
-
-
-
- ## create : 
-
-###### insert one -
-                      
-                    db.collection.insertOne({something:"something"})
-                    
-###### insert many - 
-                    
-                    db.collection.insertMany( [{something:"something"} , {something:"something"}]) 
-                    
-                    
-     #### vs code example 
-     
-     
-                    
-                    
-                    
-                    
-                    
-
- ## read 😮‍💨💨 :
-
-##### all Value  ki ase dekte chay -
-                            
-                            db.naydb.find(query={name:"nayeem"}, projection ={j j value ase tate 0 and 1 use kore show krbo ki na thik kore deya jai like name="nayeem" name : 0 dei thle name bade sob dkhbe})
-
-#### value limit first -
-                          
-                            db.nayd.find().limit(1)
-#### value limit first -
-                            db.nayd.findOne()
-##### value first skip command -
-                            
-                            db.nayd.limit(1).skip(1)
-
-
- ## update 😮‍💨💨:
-
-                         db.collection.updateOne(<filter>,<update>)   -> filter - {nameL:'nayeem'}  => update {$set:{name:"mehedi"}}
-  
-                         db.collection.updateMany(<filter>,<update>)
-  
-                         db.collection.updateMany ( {age : {$gt : 20 }} , {$inc : {age : 2}} )
-  
-  
-  ++++++
-  ------
-  
-  example :
-  ----------
-  
-  skills : ["javascript","python"] => ["js","python"]
-
-                          db.collection.updateMany ({skills : {exists : true} , {$set : { "skills.1" :" js "}}})
-  
-  
-  #### jdi push krte chai
-  
-                          db.collection.updateMany ({skills : {exists : true} , {$push : { "skills" :" bangla "}}})
-  
-  #### jdi onkk gula value dete chai skills r
-  
-                           db.collection.updateMany ({skills : {exists : true} , {$push : { "skills" :{$each :["bangla","english","torrent"] }}})
-  
-  ### jodi konta bad dete chai ["bangla ","english "] , er vtr thke 1 ta bad dete chai
-  
-                           db.collection.updateMany ({skills : {exists : true} , {$pull : { "skills" :" bangla "}}})
-  
-  ### onk gula soraite chaile 1 sthe
-  
-  
-                            db.collection.updateMany ({skills : {exists : true} , {$pullAll : { "skills" :["bangla","english","torrent"] }})
-  
-  
-  ### RENAME COLLUME :cold_face:
-  
-  {name :"saad",age :23}
-  
-                              db.cl.updateOne({name :"saad"},{$rename : {age :"base"}})
-  
-   {name :"saad",base :23}
-  .....
-  
- #### column delete
-  
-                               db.cl.updateOne({name :"saad"},{$unset : {base :""}})
-  
-
-  
-  
-  
-  
-  
-  
-  
-  ## delete 😮‍:
-  
-                                 db.collection.deleteMany()
-                                 db.collection.deleteOne()
-  
-  
-  ....................................
-  
-  Quearing Data 😮‍:
-  
-  .....................................
-
-                                   db.collection.find() - sob chole asbe
-                                   db.collection.find().count()  - koto gula ase
-                                   db.collection.find().limit(2) - limit
-                                      
+ :two_hearts: rules 1 : 
  
- first skip 2 ta koro trpr 2 ta dekhao :cold_face:
-  
-                                   db.collection.find().skip(2).limit(2) 
-                                       
-                                       
-  -1 mane boro thke choto sort  hy jabe
-  
-                                  db.collection.find().sort({age : -1})  
+   :skull: sob value payar jnnno..
+       
+       db.collection_name.find({})  
+       
+       
+:two_hearts: rules 2 : 
+ 
+   :skull: koita user ase total 
    
-   1 mane choto thke boro sort  hy jabe
-                                  
-                                   db.collection.find().sort({age : 1}) 
-                                   
-  age 2 ta samne hy name dara short krbe  :cold_face:
+         db.collection_name.find().count()  
+         
   
-                                   db.collection.find().sort({age : 1,name:1})
-                                   
-  name e onle lgbe, age lgbe na
-                                     
-                                   db.collection.find().projection({name:1,age:0}) 
-                                   
-                                   
+ :two_hearts: rules 3 : 
   
-  saad name filter koro 😮‍
+   :skull: first 10 ta skip koro and porer 50 ta dkhao
   
-                                   db.collection.find({name:"saad})  
+            db.collection_name.find().skip(10).limit(50)  
+            
+            
+            
+:two_hearts:  rules 4 : 
   
-  skills = ["js","py"]
+   :skull:  short koro ,age deye sort koro jdi age same hy thle name deye kro
+    
+            db.collection_name.find().sort({age : 1 , name : 1})
+            
+:two_hearts:  rules 5 : 
   
-                                  db.collection.find({skills:"py"})
-                                  
-   exact amn vbei hbe :cold_face:
+  :skull: projection
+       
+   kichu properties bad deye value patahano jay like amra password user r kase response pathabo na,
+       
+   specific kichu jnis like amr name lgbe suddhu..
+       
+       
+             db.collection_name.find().projection({name : 1}
+             
+   name only deo .sthe id auto asbe ,jdi oita o na chai
+       
+              db.collection_name.find().projection({name : 1,_id : 0 })
+       
+       
+ 
   
-                                  db.collection.find({skills : ["js","py"]}) 
+:two_hearts: rules 6 : 
+   
+  :skull:  speecific kono kichu search krte
+      
+               db.collection_name.find({name :"bangla"})
+               
+               
+ 
+:two_hearts: rules 7 : 
   
-  
-  exm. { name : [ {city :dhaka} ] }
-  
-                                   db.collection.find({"name.city":"dhaka"})   :cold_face:
-  
-  
-  
-  
-                                                  .....................
-                                                  :cold_face: operator
-                                                  .....................
-  
-  
-  $gt - greater then
-  $gte -greater then equal
+               user : {    skills : ["js","py"]  }
+               
+  :skull: jdi amn thake queary hbe ,
+      
+               db.collection_name.find({skills :"js"})
+               
+  :skull: jdi amn hy just ei array tai cacchi 
+       
+                db.collection_name.find({skills : ["js","py"] })
+                
+                
+                
+:two_hearts: rules 8 : 
 
-  $lt- less then
-  $lte - less then equal
-  $eq - qual
-  $ne -not equal  (value r soman na like 20 thkle ota bade sob)
-  $in - array nei jar vtr j ase tai khujbe
-  $nin - array r vtr j ase ta bad khujbe
+                skills :  {  name : "nayeem",   age:30 }  ,
+              
+              
+atar queary  
+
+              db.collection_name.find({"skills.name" : "somrat"})
+
+             
   
-  
- ------------ 
-------------query operatror :cold_face:
-  ------------
-  
-  age 22 find--> 
+:two_hearts: rules 8 :  
+
+                skills : [ {  name : "nayeem",   age:30 }  , {  name : "somrat",   age:20 }  ]
+                         
+                         
+atar queary  
+
+                 db.collection_name.find({"skills.name" : "somrat"})
+                 
+                 
+                 
+*************************:revolving_hearts:	
+     
+************************** :revolving_hearts:	
+     
+     
+                   $gt  +  $gte 
+                   $lt  +  $lte
+                   $in  +  $nin
+                   $eq  +  $ne 
                    
-                   db.user.find({age:22})
-  
-  age 22 greater then find --> 
+                   
+                   {
+                     in : array r vtr j thkbe ta match krte hbe,
+                     nin :  array r vtr j thkbe ta bade dbe sob
+                     
+                   }
+                     
+     
+     
+ #### Logical :revolving_hearts:	
+     
+                 and  +  or  + nor  + not  =>        
+           
+           
+EXAMPLE 
+     
+     
+   ##### $gte
+          
                     
-                   db.user.find({age : {$gt : 22 }}) 
-  
-  age 22 less then find --> 
-                   
-                    db.user.find({age : {$lt : 22 }}) 
-  
-  saad and jarif j kono pailei deo find --> 
-  
-                    db.user.find({name : {$in : ["saad","jarif"]}}) 
-  
-  saad and jarif 2 ta bade deo deo find --> 
-                      
-                    db.user.find({name : {$nin : ["saad","jarif"]}}) 
-  
-  and condition --> 
-                     db.user.find({$and : [{name : 'nayeem', age : 20 } ]  })
-  same - 
-  
-                      db.user.find({name : 'nayeem', age : 20 })
-  
-  
-  .....
-  
- :cold_face: exists --> 
-                              
-                              
-                              db.user.find({age : {$exists : true }})  false -> jdr age nai tdr 
-  
-  :cold_face: type -->
-  
-                              db.user.find( {address : {$type :"string"})
-  
-  ...
-  
-  { name :"robin", spent : 400, budget:400 },
-  {name :"sakil",  spent  :300, budget:400 },
-  {name :"joni",  spent  : 200 ,budget:400 },
-  
-  :cold_face: kar tk kom sevbe sort koro  -- >
-            
-            
-                               db.user.find({expr : {$lt : ["$budget ","$spent"] })
-  
-
-
-
+                    db.name.fine({ age : { $gte :20 } })
+                    
+   ###### $in 
+                     
+                     db.name.find({name : {$in : ["saad ", "jarif"]}})
+                     
+                     
+   in mane array r vtr j thkbe tai e match hyle asbe 
+           
+           
+           
+           
+           
+           ============
+          +++++++++++++++
+          ==============
+          
+          
+   ##### and  and or array nbe always
+ 
+                    db.name.find( {  $and : [ {name :"saad"} , {age :20 }   ]    }  )
+                         
+                         
+ 
+  and akta array nbe condition sotti hyte hbe 2 tai  
   
   
-
+  ##### not 
+  
+                    db.name.find({age : {$not : {$gt :20 }}})
+                    
+                    
+                    
+  #### operator  and logic
+  
+  
+                     db.name.find({$and : [ {name : "saad"} , {age : { $gte : 20, $lt : 30 } } ]})
+                     
+                     
+  
+  ##### exist 
+  
+   jdr value ase tdr e only return ,  false dele nai j j seta dkhbe
+   
+                       db.name.find({age : {$exists : true }})
+                       
+                       
+  ##### type 
+  
+                       db.name.find({age : {$type : "object" }})
+         
+         
+  
+  
+  ##### regex 
+  
+  
+                    db.name.find({ name : {$regex : //kshzh// }})
+                    
+                    
+                    
+ ************************
+ %%%%%%%%%%%%%%%%%%%%%%%%
+ ************************
+ 
+ 
